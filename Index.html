@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6200ee">
+    <meta name="description" content="Kedre Tech - Your tech news and reviews hub">
+    <title>Kedre Tech</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icons/icon-72x72.png">
+    <link rel="apple-touch-icon" href="icons/icon-152x152.png">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <img src="icons/icon-192x192.png" alt="Kedre Tech Logo">
+            <h1>Kedre Tech</h1>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Side Navigation -->
+        <aside class="side-nav" id="sideNav">
+            <div class="nav-header">
+                <img src="icons/icon-128x128.png" alt="Kedre Tech Logo">
+                <h2>Kedre Tech</h2>
+                <button class="close-btn" id="closeNavBtn">&times;</button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active"><i class="icon">🏠</i> Home</a></li>
+                    <li><a href="#phone-reviews"><i class="icon">📱</i> Phone Reviews</a></li>
+                    <li><a href="#ai-tech"><i class="icon">💡</i> AI & Tech</a></li>
+                    <li><a href="#programming"><i class="icon">💻</i> Programming</a></li>
+                    <li><a href="#solutions"><i class="icon">🛠️</i> Solutions</a></li>
+                    <li><a href="#tech-news"><i class="icon">📰</i> Tech News</a></li>
+                    <li><a href="#videos"><i class="icon">🎥</i> Videos</a></li>
+                    <li><a href="#contact"><i class="icon">📩</i> Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-footer">
+                <button id="themeToggle" class="theme-toggle">
+                    <span class="icon">🌙</span> Dark Mode
+                </button>
+                <div class="user-prefs-toggle" id="userPrefsBtn">
+                    <span class="icon">⚙️</span> Preferences
+                </div>
+            </div>
+        </aside>
+
+        <!-- User Preferences Panel -->
+        <div class="user-prefs-panel" id="userPrefsPanel">
+            <div class="prefs-header">
+                <h3>User Preferences</h3>
+                <button class="close-prefs" id="closePrefsBtn">&times;</button>
+            </div>
+            <div class="prefs-content">
+                <div class="pref-group">
+                    <h4>Content Preferences</h4>
+                    <label>
+                        <input type="checkbox" id="prefShowRatings" checked>
+                        Show ratings on reviews
+                    </label>
+                    <label>
+                        <input type="checkbox" id="prefShowImages" checked>
+                        Show images in articles
+                    </label>
+                    <label>
+                        <input type="checkbox" id="prefDarkReader">
+                        Enable dark reader mode
+                    </label>
+                </div>
+                <div class="pref-group">
+                    <h4>Notification Preferences</h4>
+                    <label>
+                        <input type="checkbox" id="prefNewsAlerts">
+                        Tech news alerts
+                    </label>
+                    <label>
+                        <input type="checkbox" id="prefReviewAlerts">
+                        New review alerts
+                    </label>
+                </div>
+                <div class="pref-group">
+                    <h4>Data Preferences</h4>
+                    <label>
+                        <input type="checkbox" id="prefSaveHistory">
+                        Save browsing history
+                    </label>
+                    <label>
+                        <input type="checkbox" id="prefSaveComments">
+                        Save comments locally
+                    </label>
+                </div>
+                <button class="save-prefs" id="savePrefsBtn">Save Preferences</button>
+            </div>
+        </div>
+
+        <!-- Phone Comparison Modal -->
+        <div class="modal" id="compareModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Compare Phones</h3>
+                    <button class="close-modal" id="closeCompareModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="compare-selectors">
+                        <select id="comparePhone1" class="compare-select">
+                            <option value="">Select Phone 1</option>
+                        </select>
+                        <select id="comparePhone2" class="compare-select">
+                            <option value="">Select Phone 2</option>
+                        </select>
+                    </div>
+                    <div class="compare-results" id="compareResults"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" id="cancelCompare">Cancel</button>
+                    <button class="btn-primary" id="confirmCompare">Compare</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Chatbot Modal -->
+        <div class="modal" id="chatbotModal">
+            <div class="modal-content chatbot-content">
+                <div class="modal-header">
+                    <h3>Tech Assistant</h3>
+                    <button class="close-modal" id="closeChatbotModal">&times;</button>
+                </div>
+                <div class="modal-body chatbot-body">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Ask a tech question...">
+                        <button id="sendChatBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Top App Bar -->
+            <header class="top-app-bar">
+                <button class="menu-btn" id="menuBtn">☰</button>
+                <h1 class="page-title">Kedre Tech</h1>
+                <div class="app-actions">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <button class="chatbot-btn" id="chatbotBtn">💬</button>
+                </div>
+            </header>
+
+            <!-- Page Sections -->
+            <section id="home" class="page-section active">
+                <div class="hero-section">
+                    <h2>Welcome to Kedre Tech</h2>
+                    <p>Your ultimate source for tech news, reviews, and tutorials</p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="phoneCount">0</div>
+                            <div class="stat-label">Phones Reviewed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="articleCount">0</div>
+                            <div class="stat-label">Tech Articles</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="tutorialCount">0</div>
+                            <div class="stat-label">Tutorials</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="solutionCount">0</div>
+                            <div class="stat-label">Solutions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendations">
+                    <h3>Recommended For You</h3>
+                    <div class="recommendation-tabs">
+                        <button class="rec-tab active" data-rec-type="phones">Phones</button>
+                        <button class="rec-tab" data-rec-type="articles">Articles</button>
+                        <button class="rec-tab" data-rec-type="tutorials">Tutorials</button>
+                    </div>
+                    <div class="recommendation-content active" id="rec-phones"></div>
+                    <div class="recommendation-content" id="rec-articles"></div>
+                    <div class="recommendation-content" id="rec-tutorials"></div>
+                </div>
+            </section>
+
+            <section id="phone-reviews" class="page-section">
+                <div class="section-header">
+                    <h2>📱 Phone Reviews</h2>
+                    <button class="compare-btn" id="comparePhonesBtn">Compare Phones</button>
+                </div>
+                <div class="filter-controls">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="flagship">Flagship</button>
+                        <button class="filter-btn" data-filter="midrange">Mid-Range</button>
+                        <button class="filter-btn" data-filter="budget">Budget</button>
+                    </div>
+                    <div class="sort-options">
+                        <select id="sortPhones">
+                            <option value="rating-desc">Rating: High to Low</option>
+                            <option value="rating-asc">Rating: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="cards-container" id="phoneReviewsContainer"></div>
+            </section>
+
+            <section id="ai-tech" class="page-section">
+                <div class="section-header">
+                    <h2>💡 AI & Technology</h2>
+                    <div class="ai-categories">
+                        <button class="ai-cat-btn active" data-category="all">All</button>
+                        <button class="ai-cat-btn" data-category="ai">AI</button>
+                        <button class="ai-cat-btn" data-category="iot">IoT</button>
+                        <button class="ai-cat-btn" data-category="blockchain">Blockchain</button>
+                        <button class="ai-cat-btn" data-category="robotics">Robotics</button>
+                    </div>
+                </div>
+                <div class="blog-grid" id="aiTechContainer"></div>
+            </section>
+
+            <section id="programming" class="page-section">
+                <div class="section-header">
+                    <h2>💻 Programming</h2>
+                    <div class="code-actions">
+                        <button class="run-code-btn" id="runCodeBtn">Run Code</button>
+                        <select id="languageSelect">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="java">Java</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="tutorials">Tutorials</button>
+                    <button class="tab-btn" data-tab="snippets">Code Snippets</button>
+                    <button class="tab-btn" data-tab="playground">Playground</button>
+                </div>
+                <div class="tab-content active" id="tutorials"></div>
+                <div class="tab-content" id="snippets"></div>
+                <div class="tab-content" id="playground">
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <span id="currentLanguage">JavaScript</span>
+                            <button class="clear-editor" id="clearEditorBtn">Clear</button>
+                        </div>
+                        <textarea id="codeEditor" spellcheck="false">// Write your code here
+console.log("Hello, Kedre Tech!");</textarea>
+                    </div>
+                    <div class="code-output">
+                        <h4>Output</h4>
+                        <pre id="codeOutput"></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="solutions" class="page-section">
+                <div class="section-header">
+                    <h2>🛠️ Software Problems & Solutions</h2>
+                    <div class="solution-search">
+                        <input type="text" id="solutionSearch" placeholder="Search for solutions...">
+                        <select id="solutionCategory">
+                            <option value="all">All Categories</option>
+                            <option value="windows">Windows</option>
+                            <option value="mac">Mac</option>
+                            <option value="linux">Linux</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="browsers">Browsers</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="faq-container" id="solutionsContainer"></div>
+            </section>
+
+            <section id="tech-news" class="page-section">
+                <div class="section-header">
+                    <h2>📰 Tech News</h2>
+                    <div class="news-filters">
+                        <select id="newsSource">
+                            <option value="all">All Sources</option>
+                            <option value="kedre">Kedre Tech</option>
+                            <option value="external">External</option>
+                        </select>
+                        <select id="newsTimeframe">
+                            <option value="all">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="news-container" id="newsContainer"></div>
+                <div class="news-pagination">
+                    <button class="page-btn" id="prevNewsPage">Previous</button>
+                    <span class="page-indicator" id="newsPageIndicator">1 of 5</span>
+                    <button class="page-btn" id="nextNewsPage">Next</button>
+                </div>
+            </section>
+
+            <section id="videos" class="page-section">
+                <div class="section-header">
+                    <h2>🎥 Videos</h2>
+                    <div class="video-filters">
+                        <select id="videoCategory">
+                            <option value="all">All Categories</option>
+                            <option value="reviews">Reviews</option>
+                            <option value="tutorials">Tutorials</option>
+                            <option value="news">News</option>
+                        </select>
+                        <select id="videoDuration">
+                            <option value="all">Any Duration</option>
+                            <option value="short">Short (<5 min)</option>
+                            <option value="medium">Medium (5-15 min)</option>
+                            <option value="long">Long (>15 min)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="video-grid" id="videoContainer"></div>
+            </section>
+
+            <section id="contact" class="page-section">
+                <h2>📩 Contact Us</h2>
+                <div class="contact-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="attachment">Attachment (optional)</label>
+                            <input type="file" id="attachment">
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                    <div class="contact-info">
+                        <h3>Other Ways to Reach Us</h3>
+                        <div class="info-item">
+                            <span class="icon">📧</span>
+                            <span>contact@kedretech.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">📱</span>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">🏢</span>
+                            <span>123 Tech Street, Silicon Valley, CA</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link">Twitter</a>
+                            <a href="#" class="social-link">Facebook</a>
+                            <a href="#" class="social-link">LinkedIn</a>
+                            <a href="#" class="social-link">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="comments-section">
+                    <h3>Community Comments</h3>
+                    <div class="comment-form">
+                        <textarea id="commentInput" placeholder="Add a comment..."></textarea>
+                        <div class="comment-actions">
+                            <div class="comment-rating">
+                                <span class="rating-label">Rating:</span>
+                                <div class="star-rating">
+                                    <span class="star" data-rating="1">☆</span>
+                                    <span class="star" data-rating="2">☆</span>
+                                    <span class="star" data-rating="3">☆</span>
+                                    <span class="star" data-rating="4">☆</span>
+                                    <span class="star" data-rating="5">☆</span>
+                                </div>
+                            </div>
+                            <button id="postCommentBtn">Post Comment</button>
+                        </div>
+                    </div>
+                    <div class="comments-list" id="commentsList"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#home" class="nav-link active"><span class="icon">🏠</span><span class="label">Home</span></a>
+            <a href="#phone-reviews" class="nav-link"><span class="icon">📱</span><span class="label">Phones</span></a>
+            <a href="#ai-tech" class="nav-link"><span class="icon">💡</span><span class="label">AI</span></a>
+            <a href="#videos" class="nav-link"><span class="icon">🎥</span><span class="label">Videos</span></a>
+            <a href="#contact" class="nav-link"><span class="icon">📩</span><span class="label">Contact</span></a>
+        </nav>
+
+        <!-- Floating Action Button -->
+        <button class="fab" id="fabBtn">+</button>
+        <div class="fab-menu" id="fabMenu">
+            <button class="fab-option" id="fabSearch"><span class="icon">🔍</span> Search</button>
+            <button class="fab-option" id="fabBookmark"><span class="icon">🔖</span> Bookmarks</button>
+            <button class="fab-option" id="fabFeedback"><span class="icon">💬</span> Feedback</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

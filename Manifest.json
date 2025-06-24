@@ -1,0 +1,105 @@
+{
+  "name": "Kedre Tech",
+  "short_name": "KedreTech",
+  "start_url": "/kedre-tech/",
+  "scope": "/kedre-tech/",
+  "display": "standalone",
+  "background_color": "#6200ee",
+  "theme_color": "#6200ee",
+  "description": "Your ultimate tech news and reviews PWA",
+  "orientation": "portrait",
+  "categories": ["technology", "news", "education"],
+  "icons": [
+    {
+      "src": "icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "description": "Home screen showing featured content"
+    },
+    {
+      "src": "screenshots/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "description": "Phone reviews section"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Latest News",
+      "short_name": "News",
+      "description": "View the latest tech news",
+      "url": "/kedre-tech/#tech-news",
+      "icons": [{ "src": "icons/news-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Phone Reviews",
+      "short_name": "Phones",
+      "description": "Compare phone reviews",
+      "url": "/kedre-tech/#phone-reviews",
+      "icons": [{ "src": "icons/phone-icon.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.example.kedretech",
+      "id": "com.example.kedretech"
+    }
+  ],
+  "prefer_related_applications": false,
+  "protocol_handlers": [
+    {
+      "protocol": "web+kedretech",
+      "url": "/kedre-tech/?url=%s"
+    }
+  ]
+}
